@@ -50,7 +50,7 @@ const getNextMatch = async (req, res) => {
     const match = currentRound.matches[currentMatch.matchNumber-1];
 
     if (!match) {
-      return res.status(404).json({ error: "No more matches in this round." });
+      const match = currentRound.matches[0];
     }
 
     // Move to the next match/round
