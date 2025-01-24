@@ -3,7 +3,6 @@ const http = require("http");
 const { Server } = require("socket.io");
 const qualificationController = require("./controllers/qualificationController");
 const gameController = require("./controllers/gameController");
-const handleBracketEvents = require("./controllers/bracketController")
 
 const app = express();
 const server = http.createServer(app);
@@ -17,9 +16,9 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`New connection: ${socket.id}`);
 
-  socket.on("send-names", (names) => {
-    qualificationController.handleSendNames(io, names);
-  });
+  // socket.on("send-names", (names) => {
+  //   qualificationController.handleSendNames(io, names);
+  // });
   
 
   socket.on("start-qualification", (data) => {
@@ -49,6 +48,13 @@ io.on("connection", (socket) => {
   
   socket.on("setup-battle", (data) => {
     gameController.setupBattle(io,data);
+  });
+
+  gameController.stopBattle(io,socket);
+
+  socket.on("unregister", (data) => {
+    gameController.unregisterJudge(io,socket ,data);
+    // Remove the judge from any tracking lists, if necessary
   });
 
 

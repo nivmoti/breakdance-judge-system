@@ -18,6 +18,10 @@ const startBattle = (io, socket) => {
     submittedVotes = 0;
     judgeVotes = {};
     roundsWins = { red: 0, blue: 0 };
+    while(judges.length < judgeNames.length){
+
+    }
+
 
     console.log(`Battle started for match: ${JSON.stringify(match)} with ${totalRounds}`);
     io.emit("battle-started", {
@@ -89,7 +93,6 @@ const submitScore = (io, socket) => {
         // Reset for next battle
         currentMatch = null;
         totalRounds = 0;
-        judges = [];
         judgeVotes = {};
         submittedVotes = 0;
         roundsWins = { red: 0, blue: 0 };
@@ -101,6 +104,13 @@ const submitScore = (io, socket) => {
     }
   });
 };
+
+const unregisterJudge = (io,socket,{name}) =>{
+  judges = judges.filter((judge) => judge.id !== socket.id);
+
+
+};
+
 
 
 
@@ -127,6 +137,24 @@ const setupBattle =(io,{ match, judgeNames, totalRounds }) =>{
 
 };
 
+const stopBattle = (io, socket) => {
+  socket.on("stop-battle", () => {
+    console.log("Stopping the current battle");
+
+    // Reset the battle state
+    currentMatch = null;
+    totalRounds = 0;
+    judgeVotes = {};
+    submittedVotes = 0;
+    roundsWins = { red: 0, blue: 0 };
+
+    // Notify all clients that the battle has been stopped
+    io.emit("battle-stopped", { message: "The current battle has been stopped by the client." });
+
+    console.log("Battle has been reset.");
+  });
+};
+
 
 const disconnect = (io,socket) =>{
   console.log(`Client disconnected: ${socket.id}`);
@@ -145,4 +173,6 @@ module.exports = {
   registerJudge,
   setupBattle,
   disconnect,
+  unregisterJudge,
+  stopBattle,
 };
