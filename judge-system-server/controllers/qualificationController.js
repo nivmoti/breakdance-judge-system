@@ -3,7 +3,7 @@ let qualificationNames = [];
 let currentIndex = 0;
 let judgeCount = 0;
 
-const startQualification = (io, data) => {
+const startQualification = (io, socket, data) => {
   qualificationNames = data.participants;
   currentIndex = 0;
   qualificationScores = {};
@@ -19,7 +19,7 @@ const startQualification = (io, data) => {
   io.emit("qualification-started", { currentName: qualificationNames[currentIndex] });
 };
 
-const submitScore = (io, { name, score, judgeName }) => {
+const submitScore = (io, socket, { name, score, judgeName }) => {
   if (!qualificationScores[name]) {
     qualificationScores[name] = {};
   }
