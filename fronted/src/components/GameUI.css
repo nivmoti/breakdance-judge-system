@@ -1,0 +1,101 @@
+.game-container {
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    color: #ffffff; /* White text for better readability */
+    background-color: black; /* Black background */
+    background-image: url("C:\projects\BreakinIsrael\main-client\public\city-jam-logo.png"); /* Path to the logo in public folder */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-size: 550px; /* Set logo size to 600px */
+    background-position: center 75%; /* Center the background horizontally and vertically */
+    min-height: 100vh; /* Full window height */
+    padding: 20px; /* Add spacing around content */
+  }
+
+ 
+  
+  .game-heading {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    color: #333;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .round-info {
+    margin: 20px 0;
+  }
+  
+  .round-text {
+    font-size: 1.2rem;
+  }
+  
+  .round-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .judge-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .judge-card {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .judge-name {
+    font-weight: bold;
+  }
+  
+  .judge-square {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+  }
+  
+  .team-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+  }
+  
+  .team {
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .blue-team {
+    border-color: blue;
+    color: blue;
+  }
+  
+  .red-team {
+    border-color: red;
+    color: red;
+  }
+  
+  .round-wins {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .winner {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #28a745;
+    font-weight: bold;
+  }
+  
